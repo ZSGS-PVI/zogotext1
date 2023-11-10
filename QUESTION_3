@@ -1,0 +1,37 @@
+3.CHECK WHETHER A GIVEN MATHEMATICAL EXPRESSION IS VALID
+
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class ValidMathExp {
+
+    public static boolean isValidExpression(String expression) {
+       
+        String regex = "^(\\([^()]*\\))*$";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(expression);
+
+      
+        return matcher.matches();
+    }
+
+    public static void main(String[] args) {
+      
+        String exp1 = "(a+b)(a*b)";
+
+        System.out.println("Input: " + exp1);
+
+        System.out.println("Output: " + (isValidExpression(exp1) ? "Valid" : "Invalid"));
+
+        System.out.println();
+
+        String exp2 = "((a+b)";
+
+        System.out.println("Input: " + exp2);
+
+        System.out.println("Output: " + (isValidExpression(exp2) ? "Valid" : "Invalid"));
+    }
+}
